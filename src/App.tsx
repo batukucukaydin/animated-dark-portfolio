@@ -1,6 +1,5 @@
-import { useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, ExternalLink, Send, ChevronRight, Sparkles, Code2, Briefcase, BookOpen, User, Stars, Rocket, Cpu, Laptop, Monitor, HardDrive } from 'lucide-react'
+import { Github, Linkedin, Mail, Send, ChevronRight, Sparkles, Code2, Briefcase, BookOpen, User, Stars, Rocket, Cpu, Laptop, Monitor, HardDrive } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -30,7 +29,7 @@ const PROJECTS = [
   },
   {
     title: 'TripMate Travel App',
-    description: 'AI‑powered itinerary planner with multilingual support and map pins.',
+    description: 'AI-powered itinerary planner with multilingual support and map pins.',
     tags: ['AI', 'Travel', 'Multilingual'],
     links: { demo: '#', code: '#' },
   },
@@ -76,67 +75,73 @@ function Header() {
   )
 }
 
-function AnimatedHeadlineBG(){
-  // Animated gradient rings + subtle particles behind the headline
-  return (
-    <div className='absolute inset-0 -z-10'>
-      <motion.div
-        className='absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full'
-        style={{ background: 'radial-gradient(closest-side, rgba(99,102,241,0.35), transparent)' }}
-        animate={{ scale: [1, 1.08, 1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className='absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full'
-        style={{ background: 'conic-gradient(from 0deg, rgba(217,70,239,0.25), rgba(99,102,241,0.25), transparent 60%)' }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-      />
-      <motion.div
-        className='absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl'
-        style={{ background: 'radial-gradient(closest-side, rgba(217,70,239,0.18), transparent)' }}
-        animate={{ opacity: [0.25, 0.4, 0.25] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
-    </div>
-  )
-}
-
 function Hero() {
   return (
     <section id='top' className='relative overflow-hidden'>
-      <div className='mx-auto max-w-6xl px-4 py-20'>
+      <div className='mx-auto max-w-6xl px-4 py-16'>
         <div className='relative flex flex-col items-center text-center gap-6'>
-          <div className='relative'>
-            <AnimatedHeadlineBG />
-            <div className='flex items-center gap-2 justify-center text-xs uppercase tracking-widest text-gray-400 mb-3'>
-              <Stars className='h-4 w-4' /> <span>My • Portfolio</span>
-            </div>
-            <h1 className='relative text-4xl md:text-6xl font-bold leading-tight'>
-              Hi, I&apos;m <span className='bg-gradient-to-r from-indigo-400 to-fuchsia-400 bg-clip-text text-transparent'>{PROFILE.name}</span>
-            </h1>
+
+          {/* 🎬 Video: küçültülmüş, başlığın hemen üstünde */}
+          <div className="w-full flex justify-center">
+            <video
+              controls
+              playsInline
+              preload='metadata'
+              className='w-[65%] md:w-[55%] aspect-video rounded-xl shadow-xl border border-white/10 bg-black/40'
+            >
+              <source src="/video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
+
+          {/* Üst yazı */}
+          <div className='flex items-center gap-2 justify-center text-xs uppercase tracking-widest text-gray-400 mt-4'>
+            <Stars className='h-4 w-4' /> <span>My • Portfolio</span>
+          </div>
+
+          {/* Başlık */}
+          <h1 className='text-4xl md:text-6xl font-bold leading-tight mt-2'>
+            Hi, I&apos;m{' '}
+            <span className='bg-gradient-to-r from-indigo-400 to-fuchsia-400 bg-clip-text text-transparent'>
+              {PROFILE.name}
+            </span>
+          </h1>
+
+          {/* Tagline */}
           <p className='text-lg md:text-xl text-gray-300 max-w-2xl'>
             {PROFILE.tagline}
           </p>
+
+          {/* Butonlar */}
           <div className='flex flex-wrap items-center justify-center gap-3'>
-            <a href='#projects'><Button size='lg' className={`group ${glow}`}><Sparkles className='mr-2 h-4 w-4 transition group-hover:rotate-12' /> See Projects</Button></a>
-            <a href='#contact'><Button size='lg' variant='secondary'><Send className='mr-2 h-4 w-4' /> Contact Me</Button></a>
+            <a href='#projects'>
+              <Button size='lg' className={`group ${glow}`}>
+                <Sparkles className='mr-2 h-4 w-4 transition group-hover:rotate-12' /> See Projects
+              </Button>
+            </a>
+            <a href='#contact'>
+              <Button size='lg' variant='secondary'>
+                <Send className='mr-2 h-4 w-4' /> Contact Me
+              </Button>
+            </a>
           </div>
-          <div className='mt-8 grid w-full grid-cols-2 gap-2 md:grid-cols-4 text-xs text-gray-400'>
-            {SKILLS.slice(0, 8).map(s => {
-              return (
-                <div key={s} className='rounded-md border border-white/5 bg-white/2 py-2 px-3 text-center flex items-center justify-center gap-2'>
-                  <span>{s}</span>
-                </div>
-              )
-            })}
+
+          {/* Küçük skill grid */}
+          <div className='mt-6 grid w-full grid-cols-2 gap-2 md:grid-cols-4 text-xs text-gray-400'>
+            {SKILLS.slice(0, 8).map(s => (
+              <div key={s} className='rounded-md border border-white/5 bg-white/2 py-2 px-3 text-center flex items-center justify-center gap-2'>
+                <span>{s}</span>
+              </div>
+            ))}
           </div>
+
         </div>
       </div>
     </section>
   )
 }
+
+
 
 function About() {
   return (
@@ -152,15 +157,7 @@ function About() {
             </CardHeader>
             <CardContent className='text-gray-300 leading-relaxed'>
               <p className='mb-3'>
-                Hello, I’m Batuhan. I’m really into software development and recently graduated as a Computer Engineer. I am
-eager to start working immediately and currently seeking a full-time Junior Software Developer position. I absolutely
-love what I do, and I’m highly motivated to dive deeper into the world of software development. While my
-professional experience is limited, I make up for it with strong determination, a willingness to learn, and the ability
-to adapt quickly. I’m a dedicated team player, reliable, and persistent when facing challenges. Your company caught
-my attention as the perfect place to grow and thrive. I’m confident, ambitious, and ready to hit the ground running.
-              </p>
-              <p>
-                
+                I’m Batuhan, a Computer Engineer passionate about creating intelligent and seamless mobile experiences. I specialize in iOS development and enjoy building apps that combine design, performance, and AI-driven functionality. With a strong focus on Swift, SwiftUI, and machine learning integration, I aim to turn innovative ideas into real, impactful products. Confident, fast-learning, and detail-oriented — I’m ready to contribute to teams that shape the future of technology.
               </p>
             </CardContent>
           </Card>
