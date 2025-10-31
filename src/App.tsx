@@ -22,16 +22,18 @@ const PROFILE = {
 
 const PROJECTS = [
   {
-    title: 'Inamorata Shopping App (AR)',
-    description: 'Swift tabanlı AR alışveriş uygulaması. Firebase kimlik doğrulama ve gerçek zamanlı veri. Odak: UX ve yenilikçi AR etkileşimleri.',
-    tags: ['Swift','ARKit','Firebase'],
-    links: { demo: '#', code: 'https://github.com/batukucukaydin/InamorataShoppingApp' },
+    title: 'Visona - Art Generator powered by AI',
+    description:
+      'AI-powered art generator that turns your ideas into stunning visuals; built with Swift, SwiftUI, Core ML, and Stable Diffusion.',
+    tags: ['AI', 'Swift', 'SwiftUI', 'Core ML', 'Stable Diffusion'],
+    links: { code: 'https://github.com/batukucukaydin/Visona' },
   },
   {
-    title: 'TripMate Travel App',
-    description: 'AI-powered itinerary planner with multilingual support and map pins.',
-    tags: ['AI', 'Travel', 'Multilingual'],
-    links: { demo: '#', code: '#' },
+    title: 'TripMate - iOS Travel Planner App',
+    description:
+      'Smart travel planner with itinerary, packing list, map view, and travel documents; built with SwiftUI & SwiftData.',
+    tags: ['SwiftUI', 'SwiftData', 'iOS', 'Travel'],
+    links: { code: 'https://github.com/batukucukaydin/TripMate' },
   },
 ];
 
@@ -81,26 +83,13 @@ function Hero() {
       <div className='mx-auto max-w-6xl px-4 py-16'>
         <div className='relative flex flex-col items-center text-center gap-6'>
 
-          {/* 🎬 Video: küçültülmüş, başlığın hemen üstünde */}
-          <div className="w-full flex justify-center">
-            <video
-              controls
-              playsInline
-              preload='metadata'
-              className='w-[65%] md:w-[55%] aspect-video rounded-xl shadow-xl border border-white/10 bg-black/40'
-            >
-              <source src="/video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-
-          {/* Üst yazı */}
-          <div className='flex items-center gap-2 justify-center text-xs uppercase tracking-widest text-gray-400 mt-4'>
+          {/* Üst şerit */}
+          <div className='flex items-center gap-2 justify-center text-xs uppercase tracking-widest text-gray-400'>
             <Stars className='h-4 w-4' /> <span>My • Portfolio</span>
           </div>
 
           {/* Başlık */}
-          <h1 className='text-4xl md:text-6xl font-bold leading-tight mt-2'>
+          <h1 className='text-4xl md:text-6xl font-bold leading-tight'>
             Hi, I&apos;m{' '}
             <span className='bg-gradient-to-r from-indigo-400 to-fuchsia-400 bg-clip-text text-transparent'>
               {PROFILE.name}
@@ -111,6 +100,20 @@ function Hero() {
           <p className='text-lg md:text-xl text-gray-300 max-w-2xl'>
             {PROFILE.tagline}
           </p>
+
+          {/* 🎬 Video: başlık ve tagline'ın HEMEN ALTINDA */}
+          <div className="w-full flex justify-center mt-2">
+            <video
+              controls
+              autoPlay
+              playsInline
+              preload='metadata'
+              className='w-[65%] md:w-[55%] aspect-video rounded-xl shadow-xl border border-white/10 bg-black/40'
+            >
+              <source src="/video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
 
           {/* Butonlar */}
           <div className='flex flex-wrap items-center justify-center gap-3'>
@@ -228,6 +231,20 @@ function Projects() {
       </div>
       <div className='grid gap-6 md:grid-cols-2'>
         {PROJECTS.map(p => <ProjectCard key={p.title} p={p} />)}
+      </div>
+      <div className='mt-8 flex justify-end'>
+        <a
+          href='https://github.com/batukucukaydin?tab=repositories'
+          target='_blank'
+          rel='noreferrer'
+        >
+          <Button
+            variant='secondary'
+            className='flex items-center gap-2'
+          >
+            <Github className='h-4 w-4' /> View More Projects
+          </Button>
+        </a>
       </div>
     </section>
   )
