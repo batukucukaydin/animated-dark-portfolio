@@ -1,26 +1,5 @@
-# Animated Dark Portfolio (React + Vite + Tailwind)
+# Batuhan Kucukaydin Portfolio Code
 
-A sleek, animated, dark-themed portfolio. Ships with minimal UI primitives (Button, Card, Badge, etc.) and no shadcn setup required.
-
-## Quick start
-
-```bash
-# 1) Install deps
-npm install
-
-# 2) Start dev server
-npm run dev
-
-# 3) Build for production
-npm run build
-npm run preview
-```
-
-## Customize
-
-- Edit `src/App.tsx`: change `PROFILE`, `PROJECTS`, `EXPERIENCE`, `BOOKS`.
-- Contact form is a mock. Wire it to Formspree/Resend/etc.
-- Tailwind styles live in `src/index.css` and classNames across components.
 
 ## Tech
 
